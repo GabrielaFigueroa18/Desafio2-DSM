@@ -1,20 +1,211 @@
 package com.example.quizmaster
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.util.Patterns
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 
 class RegistroActivity : AppCompatActivity() {
+
+    private lateinit var autenticacion: FirebaseAuth
+
+    private lateinit var campoCorreoRegistro: EditText
+    private lateinit var campoContrasenaRegistro: EditText
+    private lateinit var campoConfirmarContrasena: EditText
+    private lateinit var botonRegistrarse: Button
+    private lateinit var botonVolverLogin: Button
+    private lateinit var textoErrorRegistro: TextView
+    private lateinit var progresoRegistro: ProgressBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
         setContentView(R.layout.activity_registro)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        autenticacion = FirebaseAuth.getInstance()
+
+        inicializarComponentes()
+        configurarBotones()
+    }
+
+    private fun inicializarComponentes() {
+
+        campoCorreoRegistro = findViewById(R.id.campoCorreoRegistro)
+        campoContrasenaRegistro = findViewById(R.id.campoContrasenaRegistro)
+        campoConfirmarContrasena = findViewById(R.id.campoConfirmarContrasena)
+
+        botonRegistrarse = findViewById(R.id.botonRegistrarse)
+        botonVolverLogin = findViewById(R.id.botonVolverLogin)
+
+        textoErrorRegistro = findViewById(R.id.textoErrorRegistro)
+        progresoRegistro = findViewById(R.id.progresoRegistro)
+    }
+
+    private fun configurarBotones() {
+
+        botonRegistrarse.setOnClickListener {
+            registrarUsuario()
         }
+
+        botonVolverLogin.setOnClickListener {
+
+            val intent = Intent(this, LoginActivity::class.java)
+
+            startActivity(intent)
+
+            finish()
+        }
+    }
+
+    private fun registrarUsuario() {
+
+        val correo = campoCorreoRegistro.text.toString().trim()
+        val contrasena = campoContrasenaRegistro.text.toString()
+        val confirmarContrasena =
+            campoConfirmarContrasena.text.toString()
+
+        ocultarError()
+
+        if (!validarDatos(
+                correo,
+                contrasena,
+                confirmarContrasena
+            )
+        ) {
+            return
+        }
+
+        mostrarCargando()
+
+        autenticacion.createUserWithEmailAndPassword(
+            correo,
+            contrasena
+        ).addOnCompleteListener(this) { tarea ->
+
+            ocultarCargando()
+
+            if (tarea.isSuccessful) {
+
+                autenticacion.signOut()
+
+                val intent = Intent(this, LoginActivity::class.java)
+
+                startActivity(intent)
+
+                finish()
+
+            } else {
+
+                mostrarError(
+                    obtenerMensajeError(tarea.exception)
+                )
+            }
+        }
+    }
+
+    private fun validarDatos(
+        correo: String,
+        contrasena: String,
+        confirmarContrasena: String
+    ): Boolean {
+
+        if (correo.isEmpty()) {
+
+            mostrarError("Ingrese un correo electrónico.")
+            campoCorreoRegistro.requestFocus()
+            return false
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
+
+            mostrarError("Ingrese un correo electrónico válido.")
+            campoCorreoRegistro.requestFocus()
+            return false
+        }
+
+        if (contrasena.isEmpty()) {
+
+            mostrarError("Ingrese una contraseña.")
+            campoContrasenaRegistro.requestFocus()
+            return false
+        }
+
+        if (contrasena.length < 6) {
+
+            mostrarError(
+                "La contraseña debe tener al menos 6 caracteres."
+            )
+
+            campoContrasenaRegistro.requestFocus()
+
+            return false
+        }
+
+        if (confirmarContrasena.isEmpty()) {
+
+            mostrarError("Confirme su contraseña.")
+            campoConfirmarContrasena.requestFocus()
+            return false
+        }
+
+        if (contrasena != confirmarContrasena) {
+
+            mostrarError("Las contraseñas no coinciden.")
+            campoConfirmarContrasena.requestFocus()
+            return false
+        }
+
+        return true
+    }
+
+    private fun obtenerMensajeError(exception: Exception?): String {
+
+        return when (exception) {
+
+            is FirebaseAuthUserCollisionException ->
+                "Ya existe una cuenta registrada con este correo."
+
+            is FirebaseAuthWeakPasswordException ->
+                "La contraseña es demasiado débil."
+
+            else ->
+                "No se pudo crear la cuenta. Verifique su conexión e inténtelo nuevamente."
+        }
+    }
+
+    private fun mostrarError(mensaje: String) {
+
+        textoErrorRegistro.text = mensaje
+        textoErrorRegistro.visibility = View.VISIBLE
+    }
+
+    private fun ocultarError() {
+
+        textoErrorRegistro.text = ""
+        textoErrorRegistro.visibility = View.GONE
+    }
+
+    private fun mostrarCargando() {
+
+        progresoRegistro.visibility = View.VISIBLE
+
+        botonRegistrarse.isEnabled = false
+        botonVolverLogin.isEnabled = false
+    }
+
+    private fun ocultarCargando() {
+
+        progresoRegistro.visibility = View.GONE
+
+        botonRegistrarse.isEnabled = true
+        botonVolverLogin.isEnabled = true
     }
 }
