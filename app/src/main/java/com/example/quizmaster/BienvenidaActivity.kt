@@ -51,9 +51,8 @@ class BienvenidaActivity : AppCompatActivity() {
             )
 
             startActivity(intent)
-            finish()
 
-            return
+            finish()
         }
     }
 
@@ -108,34 +107,42 @@ class BienvenidaActivity : AppCompatActivity() {
 
         botonIngles.setOnClickListener {
 
-            seleccionarCategoria("Inglés")
+            tipoQuizSeleccionado =
+                "Inglés"
+
+            mostrarSeleccion()
         }
 
         botonMatematicas.setOnClickListener {
 
-            seleccionarCategoria("Matemáticas")
+            tipoQuizSeleccionado =
+                "Matemáticas"
+
+            mostrarSeleccion()
         }
 
         botonEntretenimiento.setOnClickListener {
 
-            seleccionarCategoria("Entretenimiento")
+            tipoQuizSeleccionado =
+                "Entretenimiento"
+
+            mostrarSeleccion()
         }
 
         botonCultura.setOnClickListener {
 
-            seleccionarCategoria("Cultura")
+            tipoQuizSeleccionado =
+                "Cultura"
+
+            mostrarSeleccion()
         }
     }
 
-    private fun seleccionarCategoria(
-        categoria: String
-    ) {
-
-        tipoQuizSeleccionado = categoria
+    private fun mostrarSeleccion() {
 
         Toast.makeText(
             this,
-            "Seleccionaste: $categoria",
+            "Seleccionaste: $tipoQuizSeleccionado",
             Toast.LENGTH_SHORT
         ).show()
     }
@@ -155,8 +162,6 @@ class BienvenidaActivity : AppCompatActivity() {
 
     private fun comenzarQuiz() {
 
-        // Verificar que se haya seleccionado una categoría
-
         if (tipoQuizSeleccionado.isEmpty()) {
 
             Toast.makeText(
@@ -167,8 +172,6 @@ class BienvenidaActivity : AppCompatActivity() {
 
             return
         }
-
-        // Obtener la dificultad seleccionada
 
         val dificultad = when (
             grupoDificultad.checkedRadioButtonId
@@ -184,8 +187,6 @@ class BienvenidaActivity : AppCompatActivity() {
                 ""
         }
 
-        // Verificar que se haya seleccionado una dificultad
-
         if (dificultad.isEmpty()) {
 
             Toast.makeText(
@@ -197,19 +198,97 @@ class BienvenidaActivity : AppCompatActivity() {
             return
         }
 
-        /*
-         * Por ahora solamente mostramos la selección.
-         *
-         * Las Activities de cada quiz se conectarán
-         * posteriormente cuando implementemos el
-         * motor del quiz.
-         */
+        when (tipoQuizSeleccionado) {
 
-        Toast.makeText(
-            this,
-            "$tipoQuizSeleccionado - $dificultad",
-            Toast.LENGTH_SHORT
-        ).show()
+            "Inglés" -> {
+
+                val intent = Intent(
+                    this,
+                    InglesActivity::class.java
+                )
+
+                intent.putExtra(
+                    "tipoQuiz",
+                    "Inglés"
+                )
+
+                intent.putExtra(
+                    "dificultad",
+                    dificultad
+                )
+
+                startActivity(intent)
+            }
+
+            "Matemáticas" -> {
+
+                val intent = Intent(
+                    this,
+                    MatematicasActivity::class.java
+                )
+
+                intent.putExtra(
+                    "tipoQuiz",
+                    "Matemáticas"
+                )
+
+                intent.putExtra(
+                    "dificultad",
+                    dificultad
+                )
+
+                startActivity(intent)
+            }
+
+            "Entretenimiento" -> {
+
+                val intent = Intent(
+                    this,
+                    EntretenimientoActivity::class.java
+                )
+
+                intent.putExtra(
+                    "tipoQuiz",
+                    "Entretenimiento"
+                )
+
+                intent.putExtra(
+                    "dificultad",
+                    dificultad
+                )
+
+                startActivity(intent)
+            }
+
+            "Cultura" -> {
+
+                val intent = Intent(
+                    this,
+                    CulturaActivity::class.java
+                )
+
+                intent.putExtra(
+                    "tipoQuiz",
+                    "Cultura"
+                )
+
+                intent.putExtra(
+                    "dificultad",
+                    dificultad
+                )
+
+                startActivity(intent)
+            }
+
+            else -> {
+
+                Toast.makeText(
+                    this,
+                    "Categoría no válida.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 
     private fun cerrarSesion() {

@@ -8,7 +8,7 @@ object BancoPreguntas {
     private const val INGLES = "Inglés"
     private const val MATEMATICAS = "Matemáticas"
     private const val ENTRETENIMIENTO = "Entretenimiento"
-    private const val CULTURA = "Cultura General"
+    private const val CULTURA = "Cultura"
 
     val preguntas = listOf(
 
