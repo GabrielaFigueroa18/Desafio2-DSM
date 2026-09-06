@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F3FA">
@@ -49,34 +51,34 @@
             android:layout_marginBottom="15dp" />
 
         <Button
-            android:id="@+id/botonCulturaGeneral"
+            android:id="@+id/botonIngles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Inglés"
+            android:textSize="17sp"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/botonMatematicas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Matemáticas"
+            android:textSize="17sp"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/botonEntretenimiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Entretenimiento"
+            android:textSize="17sp"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/botonCultura"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cultura General"
-            android:textSize="17sp"
-            android:layout_marginBottom="12dp" />
-
-        <Button
-            android:id="@+id/botonCiencia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ciencia"
-            android:textSize="17sp"
-            android:layout_marginBottom="12dp" />
-
-        <Button
-            android:id="@+id/botonDeportes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Deportes"
-            android:textSize="17sp"
-            android:layout_marginBottom="12dp" />
-
-        <Button
-            android:id="@+id/botonHistoria"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Historia"
             android:textSize="17sp"
             android:layout_marginBottom="30dp" />
 
