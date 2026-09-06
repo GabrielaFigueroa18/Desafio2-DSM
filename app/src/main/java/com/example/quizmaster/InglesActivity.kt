@@ -1,5 +1,6 @@
 package com.example.quizmaster
 
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.widget.Button
@@ -17,28 +18,24 @@ class InglesActivity : AppCompatActivity() {
     private lateinit var botonReiniciar: Button
     private lateinit var botonEnviar: Button
 
+    private lateinit var textoDificultad: TextView
+
     private val gruposOpciones =
         mutableListOf<RadioGroup>()
+
+    private var preguntas =
+        ArrayList<com.example.quizmaster.Modelos.Pregunta>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_ingles)
 
-        contenedorPreguntas =
-            findViewById(R.id.contenedorPreguntas)
-
-        botonReiniciar =
-            findViewById(R.id.botonReiniciar)
-
-        botonEnviar =
-            findViewById(R.id.botonEnviar)
+        inicializarComponentes()
 
         val dificultad =
-            intent.getStringExtra("dificultad") ?: "Fácil"
-
-        val textoDificultad =
-            findViewById<TextView>(R.id.textoDificultad)
+            intent.getStringExtra("dificultad")
+                ?: "Fácil"
 
         textoDificultad.text =
             "Dificultad: $dificultad"
@@ -50,24 +47,50 @@ class InglesActivity : AppCompatActivity() {
         }
 
         botonEnviar.setOnClickListener {
-            validarQuiz()
+            validarQuiz(dificultad)
         }
+    }
+
+    private fun inicializarComponentes() {
+
+        contenedorPreguntas =
+            findViewById(
+                R.id.contenedorPreguntas
+            )
+
+        botonReiniciar =
+            findViewById(
+                R.id.botonReiniciar
+            )
+
+        botonEnviar =
+            findViewById(
+                R.id.botonEnviar
+            )
+
+        textoDificultad =
+            findViewById(
+                R.id.textoDificultad
+            )
     }
 
     private fun cargarPreguntas(
         dificultad: String
     ) {
 
-        val preguntas =
+        preguntas =
             BancoPreguntas.obtenerPreguntas(
                 "Inglés",
                 dificultad
-            )
+            ) as ArrayList<com.example.quizmaster.Modelos.Pregunta>
 
         contenedorPreguntas.removeAllViews()
+
         gruposOpciones.clear()
 
-        preguntas.forEachIndexed { indice, pregunta ->
+        preguntas.forEachIndexed {
+                indice,
+                pregunta ->
 
             val textoPregunta =
                 TextView(this)
@@ -75,7 +98,9 @@ class InglesActivity : AppCompatActivity() {
             textoPregunta.text =
                 "${indice + 1}. ${pregunta.enunciado}"
 
-            textoPregunta.textSize = 18f
+            textoPregunta.textSize =
+                18f
+
             textoPregunta.setTypeface(
                 null,
                 Typeface.BOLD
@@ -98,7 +123,8 @@ class InglesActivity : AppCompatActivity() {
             grupoOpciones.orientation =
                 RadioGroup.VERTICAL
 
-            pregunta.opciones.forEach { opcion ->
+            pregunta.opciones.forEach {
+                    opcion ->
 
                 val radioButton =
                     RadioButton(this)
@@ -133,7 +159,8 @@ class InglesActivity : AppCompatActivity() {
 
     private fun reiniciarQuiz() {
 
-        gruposOpciones.forEach { grupo ->
+        gruposOpciones.forEach {
+                grupo ->
 
             grupo.clearCheck()
         }
@@ -145,7 +172,9 @@ class InglesActivity : AppCompatActivity() {
         ).show()
     }
 
-    private fun validarQuiz() {
+    private fun validarQuiz(
+        dificultad: String
+    ) {
 
         val preguntasFaltantes =
             mutableListOf<Int>()
@@ -154,7 +183,9 @@ class InglesActivity : AppCompatActivity() {
                 indice,
                 grupo ->
 
-            if (grupo.checkedRadioButtonId == -1) {
+            if (
+                grupo.checkedRadioButtonId == -1
+            ) {
 
                 preguntasFaltantes.add(
                     indice + 1
@@ -162,7 +193,9 @@ class InglesActivity : AppCompatActivity() {
             }
         }
 
-        if (preguntasFaltantes.isNotEmpty()) {
+        if (
+            preguntasFaltantes.isNotEmpty()
+        ) {
 
             Toast.makeText(
                 this,
@@ -173,10 +206,85 @@ class InglesActivity : AppCompatActivity() {
             return
         }
 
-        Toast.makeText(
-            this,
-            "Todas las preguntas fueron respondidas.",
-            Toast.LENGTH_SHORT
-        ).show()
+        enviarResultado(
+            dificultad
+        )
+    }
+
+    private fun enviarResultado(
+        dificultad: String
+    ) {
+
+        val preguntasTexto =
+            ArrayList<String>()
+
+        val respuestasElegidas =
+            ArrayList<String>()
+
+        val respuestasCorrectas =
+            ArrayList<String>()
+
+        preguntas.forEachIndexed {
+                indice,
+                pregunta ->
+
+            preguntasTexto.add(
+                pregunta.enunciado
+            )
+
+            respuestasCorrectas.add(
+                pregunta.respuestaCorrecta
+            )
+
+            val grupo =
+                gruposOpciones[indice]
+
+            val idSeleccionado =
+                grupo.checkedRadioButtonId
+
+            val radioSeleccionado =
+                grupo.findViewById<RadioButton>(
+                    idSeleccionado
+                )
+
+            respuestasElegidas.add(
+                radioSeleccionado.text.toString()
+            )
+        }
+
+        val intent =
+            Intent(
+                this,
+                ResultadoActivity::class.java
+            )
+
+        intent.putExtra(
+            "tipoQuiz",
+            "Inglés"
+        )
+
+        intent.putExtra(
+            "dificultad",
+            dificultad
+        )
+
+        intent.putStringArrayListExtra(
+            "preguntas",
+            preguntasTexto
+        )
+
+        intent.putStringArrayListExtra(
+            "respuestasElegidas",
+            respuestasElegidas
+        )
+
+        intent.putStringArrayListExtra(
+            "respuestasCorrectas",
+            respuestasCorrectas
+        )
+
+        startActivity(intent)
+
+        finish()
     }
 }

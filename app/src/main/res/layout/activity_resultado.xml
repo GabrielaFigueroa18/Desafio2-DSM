@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F5F3FA">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,23 +13,15 @@
         android:padding="24dp">
 
         <TextView
-            android:id="@+id/tituloResultado"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Resultado del Quiz"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginBottom="20dp" />
-
-        <TextView
             android:id="@+id/textoTipoQuiz"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Quiz: Cultura General"
-            android:textSize="20sp"
+            android:text="Quiz: Matemáticas"
+            android:textSize="26sp"
             android:textStyle="bold"
+            android:textColor="#5E35B1"
             android:gravity="center"
+            android:layout_marginTop="25dp"
             android:layout_marginBottom="10dp" />
 
         <TextView
@@ -35,17 +29,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Dificultad: Fácil"
-            android:textSize="17sp"
+            android:textSize="18sp"
+            android:textColor="#555555"
             android:gravity="center"
-            android:layout_marginBottom="20dp" />
+            android:layout_marginBottom="25dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Resultado"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="10dp" />
 
         <TextView
             android:id="@+id/textoPuntaje"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Obtuviste 4 de 5 respuestas correctas."
-            android:textSize="22sp"
-            android:textStyle="bold"
+            android:textSize="19sp"
             android:gravity="center"
             android:layout_marginBottom="20dp" />
 
@@ -53,17 +56,17 @@
             android:id="@+id/textoRetroalimentacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Me merezco un churro."
-            android:textSize="19sp"
+            android:text="¡Muy bien!"
+            android:textSize="18sp"
+            android:textStyle="bold"
             android:gravity="center"
             android:layout_marginBottom="30dp" />
 
         <TextView
-            android:id="@+id/tituloRevision"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Revisión de respuestas"
-            android:textSize="24sp"
+            android:textSize="21sp"
             android:textStyle="bold"
             android:layout_marginBottom="15dp" />
 
@@ -77,26 +80,26 @@
             android:id="@+id/botonReintentar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Volver a intentar"
-            android:textSize="16sp"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="10dp" />
+            android:text="Reintentar Quiz"
+            android:textSize="17sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="12dp" />
 
         <Button
             android:id="@+id/botonOtroQuiz"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Elegir otro quiz"
-            android:textSize="16sp"
-            android:layout_marginBottom="10dp" />
+            android:text="Elegir otro Quiz"
+            android:textSize="17sp"
+            android:layout_marginBottom="12dp" />
 
         <Button
             android:id="@+id/botonInicio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Volver al inicio"
-            android:textSize="16sp"
-            android:layout_marginBottom="20dp" />
+            android:textSize="17sp"
+            android:layout_marginBottom="25dp" />
 
     </LinearLayout>
 

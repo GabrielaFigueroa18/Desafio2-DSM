@@ -3,7 +3,6 @@ package com.example.quizmaster
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
-import android.view.Gravity
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -36,23 +35,24 @@ class ResultadoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_resultado)
 
         inicializarComponentes()
-
         obtenerDatosQuiz()
-
         calcularPuntaje()
-
         mostrarResultado()
-
         mostrarRevision()
-
         configurarBotones()
     }
 
     private fun inicializarComponentes() {
 
-        textoTipoQuiz = findViewById(R.id.textoTipoQuiz)
-        textoDificultad = findViewById(R.id.textoDificultad)
-        textoPuntaje = findViewById(R.id.textoPuntaje)
+        textoTipoQuiz =
+            findViewById(R.id.textoTipoQuiz)
+
+        textoDificultad =
+            findViewById(R.id.textoDificultad)
+
+        textoPuntaje =
+            findViewById(R.id.textoPuntaje)
+
         textoRetroalimentacion =
             findViewById(R.id.textoRetroalimentacion)
 
@@ -72,22 +72,27 @@ class ResultadoActivity : AppCompatActivity() {
     private fun obtenerDatosQuiz() {
 
         tipoQuiz =
-            intent.getStringExtra("tipoQuiz") ?: "Quiz"
+            intent.getStringExtra("tipoQuiz")
+                ?: "Quiz"
 
         dificultad =
-            intent.getStringExtra("dificultad") ?: "Fácil"
+            intent.getStringExtra("dificultad")
+                ?: "Fácil"
 
         preguntas =
-            intent.getStringArrayListExtra("preguntas")
-                ?: ArrayList()
+            intent.getStringArrayListExtra(
+                "preguntas"
+            ) ?: ArrayList()
 
         respuestasElegidas =
-            intent.getStringArrayListExtra("respuestasElegidas")
-                ?: ArrayList()
+            intent.getStringArrayListExtra(
+                "respuestasElegidas"
+            ) ?: ArrayList()
 
         respuestasCorrectas =
-            intent.getStringArrayListExtra("respuestasCorrectas")
-                ?: ArrayList()
+            intent.getStringArrayListExtra(
+                "respuestasCorrectas"
+            ) ?: ArrayList()
     }
 
     private fun calcularPuntaje() {
@@ -102,14 +107,18 @@ class ResultadoActivity : AppCompatActivity() {
 
         for (indice in 0 until cantidadPreguntas) {
 
-            if (
+            val respuestaElegida =
                 respuestasElegidas[indice].trim()
-                    .equals(
-                        respuestasCorrectas[indice].trim(),
-                        ignoreCase = true
-                    )
-            ) {
 
+            val respuestaCorrecta =
+                respuestasCorrectas[indice].trim()
+
+            if (
+                respuestaElegida.equals(
+                    respuestaCorrecta,
+                    ignoreCase = true
+                )
+            ) {
                 cantidadAciertos++
             }
         }
@@ -118,7 +127,11 @@ class ResultadoActivity : AppCompatActivity() {
     private fun mostrarResultado() {
 
         textoTipoQuiz.text =
-            "Quiz: $tipoQuiz"
+            if (tipoQuiz == "Cultura") {
+                "Quiz: Cultura General"
+            } else {
+                "Quiz: $tipoQuiz"
+            }
 
         textoDificultad.text =
             "Dificultad: $dificultad"
@@ -181,7 +194,7 @@ class ResultadoActivity : AppCompatActivity() {
                     "No disponible"
                 }
 
-            val respuestaCorrectaIndicada =
+            val esCorrecta =
                 respuestaElegida.trim()
                     .equals(
                         respuestaCorrecta.trim(),
@@ -193,7 +206,7 @@ class ResultadoActivity : AppCompatActivity() {
                 pregunta,
                 respuestaElegida,
                 respuestaCorrecta,
-                respuestaCorrectaIndicada
+                esCorrecta
             )
         }
     }
@@ -206,7 +219,8 @@ class ResultadoActivity : AppCompatActivity() {
         esCorrecta: Boolean
     ) {
 
-        val tarjeta = LinearLayout(this)
+        val tarjeta =
+            LinearLayout(this)
 
         tarjeta.orientation =
             LinearLayout.VERTICAL
@@ -224,7 +238,9 @@ class ResultadoActivity : AppCompatActivity() {
         textoPregunta.text =
             "$numeroPregunta. $pregunta"
 
-        textoPregunta.textSize = 18f
+        textoPregunta.textSize =
+            18f
+
         textoPregunta.setTypeface(
             null,
             Typeface.BOLD
@@ -236,7 +252,8 @@ class ResultadoActivity : AppCompatActivity() {
         textoRespuestaElegida.text =
             "Tu respuesta: $respuestaElegida"
 
-        textoRespuestaElegida.textSize = 16f
+        textoRespuestaElegida.textSize =
+            16f
 
         val textoRespuestaCorrecta =
             TextView(this)
@@ -244,7 +261,8 @@ class ResultadoActivity : AppCompatActivity() {
         textoRespuestaCorrecta.text =
             "Respuesta correcta: $respuestaCorrecta"
 
-        textoRespuestaCorrecta.textSize = 16f
+        textoRespuestaCorrecta.textSize =
+            16f
 
         val textoEstado =
             TextView(this)
@@ -260,7 +278,9 @@ class ResultadoActivity : AppCompatActivity() {
                 "✗ Incorrecta"
         }
 
-        textoEstado.textSize = 16f
+        textoEstado.textSize =
+            16f
+
         textoEstado.setTypeface(
             null,
             Typeface.BOLD
@@ -284,25 +304,31 @@ class ResultadoActivity : AppCompatActivity() {
             20
         )
 
-        tarjeta.layoutParams = parametros
+        tarjeta.layoutParams =
+            parametros
 
-        contenedorRevision.addView(tarjeta)
+        contenedorRevision.addView(
+            tarjeta
+        )
     }
 
     private fun configurarBotones() {
 
         botonReintentar.setOnClickListener {
 
+            val claseQuiz =
+                obtenerActividadQuiz()
+
+            if (claseQuiz == null) {
+                volverABienvenida()
+                return@setOnClickListener
+            }
+
             val intent =
                 Intent(
                     this,
-                    MainActivity::class.java
+                    claseQuiz
                 )
-
-            intent.putExtra(
-                "accion",
-                "reintentar"
-            )
 
             intent.putExtra(
                 "tipoQuiz",
@@ -321,37 +347,52 @@ class ResultadoActivity : AppCompatActivity() {
 
         botonOtroQuiz.setOnClickListener {
 
-            val intent =
-                Intent(
-                    this,
-                    MainActivity::class.java
-                )
-
-            intent.putExtra(
-                "accion",
-                "otroQuiz"
-            )
-
-            startActivity(intent)
-
-            finish()
+            volverABienvenida()
         }
 
         botonInicio.setOnClickListener {
 
-            val intent =
-                Intent(
-                    this,
-                    MainActivity::class.java
-                )
-
-            intent.flags =
-                Intent.FLAG_ACTIVITY_CLEAR_TOP or
-                        Intent.FLAG_ACTIVITY_SINGLE_TOP
-
-            startActivity(intent)
-
-            finish()
+            volverABienvenida()
         }
+    }
+
+    private fun obtenerActividadQuiz():
+            Class<*>? {
+
+        return when (tipoQuiz) {
+
+            "Inglés" ->
+                InglesActivity::class.java
+
+            "Matemáticas" ->
+                MatematicasActivity::class.java
+
+            "Entretenimiento" ->
+                EntretenimientoActivity::class.java
+
+            "Cultura",
+            "Cultura General" ->
+                CulturaActivity::class.java
+
+            else ->
+                null
+        }
+    }
+
+    private fun volverABienvenida() {
+
+        val intent =
+            Intent(
+                this,
+                BienvenidaActivity::class.java
+            )
+
+        intent.flags =
+            Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                    Intent.FLAG_ACTIVITY_SINGLE_TOP
+
+        startActivity(intent)
+
+        finish()
     }
 }
