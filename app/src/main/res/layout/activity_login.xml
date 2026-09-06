@@ -1,43 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F3FA">
+    android:background="@color/colorGeneral5"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="30dp">
+        android:padding="28dp"
+        android:gravity="center_vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Iniciar sesión"
-            android:textSize="30sp"
+            android:textSize="28sp"
             android:textStyle="bold"
-            android:textColor="#5E35B1"
+            android:textColor="@color/colorGeneralTexto"
             android:gravity="center"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="6dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ingresa a tu cuenta de QuizMaster"
-            android:textSize="16sp"
-            android:textColor="#666666"
+            android:textSize="14sp"
+            android:textColor="@color/colorTextoSecundario"
             android:gravity="center"
-            android:layout_marginBottom="35dp" />
+            android:layout_marginBottom="32dp" />
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Correo electrónico"
-            android:layout_marginBottom="14dp">
+            android:layout_marginBottom="16dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/campoCorreo"
@@ -49,11 +54,16 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Contraseña"
-            android:layout_marginBottom="14dp"
-            app:endIconMode="password_toggle">
+            android:layout_marginBottom="16dp"
+            app:endIconMode="password_toggle"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/campoContrasena"
@@ -70,25 +80,35 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textSize="14sp"
-            android:textColor="#B00020"
+            android:textColor="@color/colorTextoError"
             android:visibility="gone"
-            android:layout_marginBottom="14dp" />
+            android:layout_marginBottom="16dp" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/botonIniciarSesion"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="54dp"
             android:text="Iniciar sesión"
             android:textSize="16sp"
-            android:layout_marginBottom="14dp" />
+            android:textStyle="bold"
+            android:textColor="@color/colorGeneralTextoOnPrimary"
+            app:backgroundTint="@color/colorGeneral1"
+            app:cornerRadius="12dp"
+            android:textAllCaps="false"
+            android:layout_marginBottom="12dp" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/botonIrRegistro"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:text="Crear una cuenta"
-            android:textSize="16sp"
-            android:layout_marginBottom="18dp" />
+            android:textSize="15sp"
+            android:textColor="@color/colorGeneralTexto"
+            app:strokeColor="@color/colorGeneral1"
+            app:cornerRadius="12dp"
+            android:textAllCaps="false"
+            android:layout_marginBottom="16dp" />
 
         <ProgressBar
             android:id="@+id/progresoLogin"
@@ -98,5 +118,4 @@
             android:visibility="gone" />
 
     </LinearLayout>
-
 </ScrollView>

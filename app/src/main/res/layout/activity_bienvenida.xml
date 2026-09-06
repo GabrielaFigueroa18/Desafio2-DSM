@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F3FA">
+    android:background="@color/colorGeneral5"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,81 +14,132 @@
         android:padding="24dp">
 
         <TextView
-            android:id="@+id/textoSaludo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="¡Hola!"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:textColor="#5E35B1"
-            android:gravity="center"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="8dp" />
-
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Bienvenido a QuizMaster"
-            android:textSize="22sp"
+            android:textSize="26sp"
             android:textStyle="bold"
+            android:textColor="@color/colorGeneralTexto"
             android:gravity="center"
-            android:layout_marginBottom="15dp" />
+            android:layout_marginTop="8dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cada quiz contiene 5 preguntas de opción múltiple. Debes responder todas antes de finalizar."
-            android:textSize="16sp"
-            android:textColor="#555555"
+            android:text="Pon a prueba tus conocimientos y descubre cuánto sabes."
+            android:textSize="14sp"
+            android:textColor="@color/colorTextoSecundario"
             android:gravity="center"
-            android:layout_marginBottom="30dp" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="28dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Selecciona un tipo de quiz"
-            android:textSize="20sp"
+            android:text="SELECCIONA UNA CATEGORÍA"
+            android:textSize="12sp"
             android:textStyle="bold"
-            android:layout_marginBottom="15dp" />
-
-        <Button
-            android:id="@+id/botonIngles"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Inglés"
-            android:textSize="17sp"
+            android:letterSpacing="0.05"
+            android:textColor="@color/colorGeneralTexto"
             android:layout_marginBottom="12dp" />
 
-        <Button
-            android:id="@+id/botonMatematicas"
+        <!-- Tarjetas de Categorías -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardIngles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Matemáticas"
-            android:textSize="17sp"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/colorIngles1"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/colorIngles4">
 
-        <Button
-            android:id="@+id/botonEntretenimiento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Entretenimiento"
-            android:textSize="17sp"
-            android:layout_marginBottom="12dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Inglés"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorInglesTexto"
+                android:gravity="center" />
+        </com.google.android.material.card.MaterialCardView>
 
-        <Button
-            android:id="@+id/botonCultura"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardMatematicas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cultura General"
-            android:textSize="17sp"
-            android:layout_marginBottom="30dp" />
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/colorMatematicas1"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/colorMatematicas4">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Matemáticas"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorMatematicasTexto"
+                android:gravity="center" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardEntretenimiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/colorEntretenimiento1"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/colorEntretenimiento4">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Entretenimiento"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorEntretenimientoTexto"
+                android:gravity="center" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardCultura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/colorCultura1"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/colorCultura4">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Cultura General"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorCulturaTexto"
+                android:gravity="center" />
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Selecciona la dificultad"
-            android:textSize="20sp"
+            android:text="SELECCIONA LA DIFICULTAD"
+            android:textSize="12sp"
             android:textStyle="bold"
+            android:letterSpacing="0.05"
+            android:textColor="@color/colorGeneralTexto"
             android:layout_marginBottom="10dp" />
 
         <RadioGroup
@@ -96,41 +148,50 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginBottom="30dp">
+            android:layout_marginBottom="28dp">
 
             <RadioButton
                 android:id="@+id/opcionFacil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Fácil"
-                android:textSize="17sp"
-                android:layout_marginEnd="40dp" />
+                android:textSize="15sp"
+                android:textColor="@color/colorTextoPrincipal"
+                android:layout_marginEnd="32dp" />
 
             <RadioButton
                 android:id="@+id/opcionDificil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Difícil"
-                android:textSize="17sp" />
-
+                android:textSize="15sp"
+                android:textColor="@color/colorTextoPrincipal" />
         </RadioGroup>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/botonComenzarQuiz"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:text="Comenzar Quiz"
-            android:textSize="18sp"
-            android:layout_marginBottom="15dp" />
-
-        <Button
-            android:id="@+id/botonCerrarSesion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cerrar sesión"
             android:textSize="16sp"
-            android:layout_marginBottom="30dp" />
+            android:textStyle="bold"
+            android:textColor="@color/colorGeneralTextoOnPrimary"
+            app:backgroundTint="@color/colorGeneral1"
+            app:cornerRadius="12dp"
+            android:textAllCaps="false"
+            android:layout_marginBottom="12dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botonCerrarSesion"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="Cerrar sesión"
+            android:textSize="15sp"
+            android:textColor="@color/colorGeneralTexto"
+            app:strokeColor="@color/colorGeneral1"
+            app:cornerRadius="12dp"
+            android:textAllCaps="false" />
 
     </LinearLayout>
-
 </ScrollView>

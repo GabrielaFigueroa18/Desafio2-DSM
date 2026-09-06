@@ -137,7 +137,6 @@ object BancoPreguntas {
             categoria = INGLES
         ),
 
-        // Pregunta especial solicitada: CAN / CAN'T
         Pregunta(
             enunciado = "Completa correctamente: \"I ___ swim, but I ___ fly.\"",
             opciones = listOf(
@@ -208,7 +207,6 @@ object BancoPreguntas {
             categoria = MATEMATICAS
         ),
 
-        // Pregunta especial solicitada: álgebra
         Pregunta(
             enunciado = "Si x + 7 = 12, ¿cuál es el valor de x?",
             opciones = listOf(
@@ -278,7 +276,6 @@ object BancoPreguntas {
             categoria = MATEMATICAS
         ),
 
-        // Pregunta especial solicitada: matrices
         Pregunta(
             enunciado = "Si A = [[1, 2], [3, 4]], ¿cuál es el valor de la suma de los elementos de la diagonal principal?",
             opciones = listOf(
@@ -311,19 +308,6 @@ object BancoPreguntas {
         ),
 
         Pregunta(
-            enunciado = "¿Qué instrumento tiene teclas blancas y negras?",
-            opciones = listOf(
-                "Violín",
-                "Piano",
-                "Trompeta",
-                "Batería"
-            ),
-            respuestaCorrecta = "Piano",
-            dificultad = FACIL,
-            categoria = ENTRETENIMIENTO
-        ),
-
-        Pregunta(
             enunciado = "¿Qué género cinematográfico busca principalmente provocar miedo?",
             opciones = listOf(
                 "Comedia",
@@ -349,7 +333,6 @@ object BancoPreguntas {
             categoria = ENTRETENIMIENTO
         ),
 
-        // Pregunta especial solicitada: Harry Potter
         Pregunta(
             enunciado = "¿Cómo se llama la escuela de magia a la que asiste Harry Potter?",
             opciones = listOf(
@@ -359,6 +342,19 @@ object BancoPreguntas {
                 "Ilvermorny"
             ),
             respuestaCorrecta = "Hogwarts",
+            dificultad = FACIL,
+            categoria = ENTRETENIMIENTO
+        ),
+
+        Pregunta(
+            enunciado = "¿Qué objeto pierde Cenicienta al salir del baile?",
+            opciones = listOf(
+                "Una corona",
+                "Un zapato de cristal",
+                "Un collar",
+                "Un abanico"
+            ),
+            respuestaCorrecta = "Un zapato de cristal",
             dificultad = FACIL,
             categoria = ENTRETENIMIENTO
         ),
@@ -381,19 +377,6 @@ object BancoPreguntas {
         ),
 
         Pregunta(
-            enunciado = "¿Qué película ganó el Óscar a Mejor Película en 1994?",
-            opciones = listOf(
-                "Pulp Fiction",
-                "Forrest Gump",
-                "The Shawshank Redemption",
-                "The Lion King"
-            ),
-            respuestaCorrecta = "Forrest Gump",
-            dificultad = DIFICIL,
-            categoria = ENTRETENIMIENTO
-        ),
-
-        Pregunta(
             enunciado = "¿Quién dirigió la película \"Psycho\" de 1960?",
             opciones = listOf(
                 "Stanley Kubrick",
@@ -406,7 +389,6 @@ object BancoPreguntas {
             categoria = ENTRETENIMIENTO
         ),
 
-        // Pregunta especial solicitada: Dr. House
         Pregunta(
             enunciado = "¿Cuál es la especialidad médica principal del Dr. Gregory House en la serie \"House M.D.\"?",
             opciones = listOf(
@@ -416,6 +398,19 @@ object BancoPreguntas {
                 "Dermatología"
             ),
             respuestaCorrecta = "Diagnóstico",
+            dificultad = DIFICIL,
+            categoria = ENTRETENIMIENTO
+        ),
+
+        Pregunta(
+            enunciado = "¿Cómo se llama el padre de Simba en \"El Rey León\"?",
+            opciones = listOf(
+                "Scar",
+                "Mufasa",
+                "Timon",
+                "Rafiki"
+            ),
+            respuestaCorrecta = "Mufasa",
             dificultad = DIFICIL,
             categoria = ENTRETENIMIENTO
         ),

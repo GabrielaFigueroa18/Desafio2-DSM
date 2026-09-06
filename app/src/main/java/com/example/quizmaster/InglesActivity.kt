@@ -1,8 +1,8 @@
 package com.example.quizmaster
 
 import android.content.Intent
-import android.graphics.Typeface
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.RadioButton
@@ -11,25 +11,27 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.quizmaster.Modelos.BancoPreguntas
+import com.example.quizmaster.Modelos.Pregunta
 
 class InglesActivity : AppCompatActivity() {
 
     private lateinit var contenedorPreguntas: LinearLayout
     private lateinit var botonReiniciar: Button
     private lateinit var botonEnviar: Button
-
     private lateinit var textoDificultad: TextView
 
-    private val gruposOpciones =
-        mutableListOf<RadioGroup>()
+    private val tarjetasVistas =
+        mutableListOf<View>()
 
     private var preguntas =
-        ArrayList<com.example.quizmaster.Modelos.Pregunta>()
+        ArrayList<Pregunta>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_ingles)
+        setContentView(
+            R.layout.activity_ingles
+        )
 
         inicializarComponentes()
 
@@ -82,87 +84,85 @@ class InglesActivity : AppCompatActivity() {
             BancoPreguntas.obtenerPreguntas(
                 "Inglés",
                 dificultad
-            ) as ArrayList<com.example.quizmaster.Modelos.Pregunta>
+            ) as ArrayList<Pregunta>
 
         contenedorPreguntas.removeAllViews()
 
-        gruposOpciones.clear()
+        tarjetasVistas.clear()
 
         preguntas.forEachIndexed {
                 indice,
                 pregunta ->
 
+            val tarjeta =
+                layoutInflater.inflate(
+                    R.layout.item_pregunta,
+                    contenedorPreguntas,
+                    false
+                )
+
             val textoPregunta =
-                TextView(this)
+                tarjeta.findViewById<TextView>(
+                    R.id.textoPregunta
+                )
+
+            val grupoOpciones =
+                tarjeta.findViewById<RadioGroup>(
+                    R.id.grupoOpciones
+                )
 
             textoPregunta.text =
                 "${indice + 1}. ${pregunta.enunciado}"
 
-            textoPregunta.textSize =
-                18f
-
-            textoPregunta.setTypeface(
-                null,
-                Typeface.BOLD
-            )
-
-            textoPregunta.setPadding(
-                0,
-                16,
-                0,
-                8
-            )
-
-            contenedorPreguntas.addView(
-                textoPregunta
-            )
-
-            val grupoOpciones =
-                RadioGroup(this)
-
-            grupoOpciones.orientation =
-                RadioGroup.VERTICAL
-
-            pregunta.opciones.forEach {
+            pregunta.opciones.forEachIndexed {
+                    indiceOpcion,
                     opcion ->
 
-                val radioButton =
-                    RadioButton(this)
+                if (indiceOpcion < grupoOpciones.childCount) {
 
-                radioButton.text =
-                    opcion
+                    val radioButton =
+                        grupoOpciones.getChildAt(
+                            indiceOpcion
+                        ) as RadioButton
 
-                radioButton.textSize =
-                    16f
+                    radioButton.text =
+                        opcion
 
-                radioButton.setPadding(
-                    8,
-                    6,
-                    8,
-                    6
-                )
-
-                grupoOpciones.addView(
-                    radioButton
-                )
+                    radioButton.visibility =
+                        View.VISIBLE
+                }
             }
 
-            gruposOpciones.add(
+            for (
+            indiceOpcion
+            in pregunta.opciones.size until grupoOpciones.childCount
+            ) {
+
                 grupoOpciones
+                    .getChildAt(indiceOpcion)
+                    .visibility = View.GONE
+            }
+
+            tarjetasVistas.add(
+                tarjeta
             )
 
             contenedorPreguntas.addView(
-                grupoOpciones
+                tarjeta
             )
         }
     }
 
     private fun reiniciarQuiz() {
 
-        gruposOpciones.forEach {
-                grupo ->
+        tarjetasVistas.forEach { tarjeta ->
 
-            grupo.clearCheck()
+            val grupoOpciones =
+                tarjeta.findViewById<RadioGroup>(
+                    R.id.grupoOpciones
+                )
+
+            grupoOpciones.clearCheck()
         }
 
         Toast.makeText(
@@ -179,12 +179,17 @@ class InglesActivity : AppCompatActivity() {
         val preguntasFaltantes =
             mutableListOf<Int>()
 
-        gruposOpciones.forEachIndexed {
+        tarjetasVistas.forEachIndexed {
                 indice,
-                grupo ->
+                tarjeta ->
+
+            val grupoOpciones =
+                tarjeta.findViewById<RadioGroup>(
+                    R.id.grupoOpciones
+                )
 
             if (
-                grupo.checkedRadioButtonId == -1
+                grupoOpciones.checkedRadioButtonId == -1
             ) {
 
                 preguntasFaltantes.add(
@@ -206,9 +211,7 @@ class InglesActivity : AppCompatActivity() {
             return
         }
 
-        enviarResultado(
-            dificultad
-        )
+        enviarResultado(dificultad)
     }
 
     private fun enviarResultado(
@@ -236,14 +239,19 @@ class InglesActivity : AppCompatActivity() {
                 pregunta.respuestaCorrecta
             )
 
-            val grupo =
-                gruposOpciones[indice]
+            val tarjeta =
+                tarjetasVistas[indice]
+
+            val grupoOpciones =
+                tarjeta.findViewById<RadioGroup>(
+                    R.id.grupoOpciones
+                )
 
             val idSeleccionado =
-                grupo.checkedRadioButtonId
+                grupoOpciones.checkedRadioButtonId
 
             val radioSeleccionado =
-                grupo.findViewById<RadioButton>(
+                grupoOpciones.findViewById<RadioButton>(
                     idSeleccionado
                 )
 

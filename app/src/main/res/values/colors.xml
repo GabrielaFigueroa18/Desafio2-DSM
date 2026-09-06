@@ -1,5 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <!-- ================================================= -->
+    <!-- PALETA GENERAL                                     -->
+    <!-- ================================================= -->
+    <color name="colorGeneral1">#1976D2</color>
+    <color name="colorGeneral2">#2196F3</color>
+    <color name="colorGeneral3">#64B5F6</color>
+    <color name="colorGeneral4">#E3F2FD</color>
+    <color name="colorGeneral5">#F5F9FF</color>
+    <color name="colorGeneralTexto">#0D47A1</color>
+    <color name="colorGeneralTextoOnPrimary">#FFFFFF</color>
+
+    <!-- ================================================= -->
+    <!-- PALETA INGLÉS                                    -->
+    <!-- ================================================= -->
+    <color name="colorIngles1">#6A1B9A</color>
+    <color name="colorIngles2">#8E24AA</color>
+    <color name="colorIngles3">#BA68C8</color>
+    <color name="colorIngles4">#EDE7F6</color>
+    <color name="colorIngles5">#F3EFEF</color>
+    <color name="colorInglesTexto">#4A148C</color>
+
+    <!-- ================================================= -->
+    <!-- PALETA MATEMÁTICAS         -->
+    <!-- ================================================= -->
+    <color name="colorMatematicas1">#F57C00</color>
+    <color name="colorMatematicas2">#FB8C00</color>
+    <color name="colorMatematicas3">#FFB74D</color>
+    <color name="colorMatematicas4">#FFE0B2</color>
+    <color name="colorMatematicas5">#FFFBEA</color>
+    <color name="colorMatematicasTexto">#D84315</color>
+
+    <!-- ================================================= -->
+    <!-- PALETA ENTRETENIMIENTO                           -->
+    <!-- ================================================= -->
+    <color name="colorEntretenimiento1">#C2185B</color>
+    <color name="colorEntretenimiento2">#E91E63</color>
+    <color name="colorEntretenimiento3">#F06292</color>
+    <color name="colorEntretenimiento4">#FCE4EC</color>
+    <color name="colorEntretenimiento5">#FFF0F5</color>
+    <color name="colorEntretenimientoTexto">#880E4F</color>
+
+    <!-- ================================================= -->
+    <!-- PALETA CULTURA GENERAL                           -->
+    <!-- ================================================= -->
+    <color name="colorCultura1">#2E7D32</color>
+    <color name="colorCultura2">#4CAF50</color>
+    <color name="colorCultura3">#81C784</color>
+    <color name="colorCultura4">#E8F5E9</color>
+    <color name="colorCultura5">#F1F8F5</color>
+    <color name="colorCulturaTexto">#1B5E20</color>
+
+    <!-- ================================================= -->
+    <!-- COLORES DE APOYO Y ESTADO                         -->
+    <!-- ================================================= -->
+    <color name="colorTextoPrincipal">#1C1B1F</color>
+    <color name="colorTextoSecundario">#49454F</color>
+    <color name="colorTextoError">#B00020</color>
+    <color name="colorBlanco">#FFFFFF</color>
+    <color name="colorSuperficie">#FFFFFF</color>
+    <color name="colorBordeCard">#E0E0E0</color>
+
 </resources>
