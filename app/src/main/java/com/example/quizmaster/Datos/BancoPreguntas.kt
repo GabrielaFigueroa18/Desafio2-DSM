@@ -18,7 +18,12 @@ object BancoPreguntas {
 
         Pregunta(
             enunciado = "¿Cuál es la traducción de \"house\"?",
-            opciones = listOf("Casa", "Escuela", "Calle", "Mesa"),
+            opciones = listOf(
+                "Casa",
+                "Escuela",
+                "Calle",
+                "Mesa"
+            ),
             respuestaCorrecta = "Casa",
             dificultad = FACIL,
             categoria = INGLES
@@ -26,7 +31,12 @@ object BancoPreguntas {
 
         Pregunta(
             enunciado = "¿Cuál es el pasado de \"go\"?",
-            opciones = listOf("Goed", "Went", "Gone", "Going"),
+            opciones = listOf(
+                "Goed",
+                "Went",
+                "Gone",
+                "Going"
+            ),
             respuestaCorrecta = "Went",
             dificultad = FACIL,
             categoria = INGLES
@@ -34,7 +44,12 @@ object BancoPreguntas {
 
         Pregunta(
             enunciado = "¿Qué palabra significa \"rápido\"?",
-            opciones = listOf("Slow", "Fast", "Weak", "Late"),
+            opciones = listOf(
+                "Slow",
+                "Fast",
+                "Weak",
+                "Late"
+            ),
             respuestaCorrecta = "Fast",
             dificultad = FACIL,
             categoria = INGLES
@@ -42,7 +57,12 @@ object BancoPreguntas {
 
         Pregunta(
             enunciado = "Completa la oración: \"She ___ a doctor.\"",
-            opciones = listOf("are", "am", "is", "be"),
+            opciones = listOf(
+                "are",
+                "am",
+                "is",
+                "be"
+            ),
             respuestaCorrecta = "is",
             dificultad = FACIL,
             categoria = INGLES
@@ -50,7 +70,12 @@ object BancoPreguntas {
 
         Pregunta(
             enunciado = "¿Cuál es el plural correcto de \"child\"?",
-            opciones = listOf("Childs", "Children", "Childes", "Childrens"),
+            opciones = listOf(
+                "Childs",
+                "Children",
+                "Childes",
+                "Childrens"
+            ),
             respuestaCorrecta = "Children",
             dificultad = FACIL,
             categoria = INGLES
@@ -112,15 +137,16 @@ object BancoPreguntas {
             categoria = INGLES
         ),
 
+        // Pregunta especial solicitada: CAN / CAN'T
         Pregunta(
-            enunciado = "En la frase \"Had I known, I would have acted differently\", ¿qué estructura se utiliza?",
+            enunciado = "Completa correctamente: \"I ___ swim, but I ___ fly.\"",
             opciones = listOf(
-                "Condicional tercero invertido",
-                "Comparativo",
-                "Voz activa",
-                "Gerundio"
+                "can / can't",
+                "can't / can",
+                "can / can",
+                "can't / can't"
             ),
-            respuestaCorrecta = "Condicional tercero invertido",
+            respuestaCorrecta = "can / can't",
             dificultad = DIFICIL,
             categoria = INGLES
         ),
@@ -132,7 +158,12 @@ object BancoPreguntas {
 
         Pregunta(
             enunciado = "¿Cuánto es 7 × 8?",
-            opciones = listOf("54", "56", "64", "48"),
+            opciones = listOf(
+                "54",
+                "56",
+                "64",
+                "48"
+            ),
             respuestaCorrecta = "56",
             dificultad = FACIL,
             categoria = MATEMATICAS
@@ -140,7 +171,12 @@ object BancoPreguntas {
 
         Pregunta(
             enunciado = "¿Cuál es el resultado de 15 + 27?",
-            opciones = listOf("32", "40", "42", "45"),
+            opciones = listOf(
+                "32",
+                "40",
+                "42",
+                "45"
+            ),
             respuestaCorrecta = "42",
             dificultad = FACIL,
             categoria = MATEMATICAS
@@ -148,7 +184,12 @@ object BancoPreguntas {
 
         Pregunta(
             enunciado = "¿Cuánto es 100 ÷ 4?",
-            opciones = listOf("20", "25", "30", "40"),
+            opciones = listOf(
+                "20",
+                "25",
+                "30",
+                "40"
+            ),
             respuestaCorrecta = "25",
             dificultad = FACIL,
             categoria = MATEMATICAS
@@ -156,16 +197,27 @@ object BancoPreguntas {
 
         Pregunta(
             enunciado = "¿Cuál es el perímetro de un cuadrado de lado 5 cm?",
-            opciones = listOf("10 cm", "15 cm", "20 cm", "25 cm"),
+            opciones = listOf(
+                "10 cm",
+                "15 cm",
+                "20 cm",
+                "25 cm"
+            ),
             respuestaCorrecta = "20 cm",
             dificultad = FACIL,
             categoria = MATEMATICAS
         ),
 
+        // Pregunta especial solicitada: álgebra
         Pregunta(
-            enunciado = "¿Qué fracción equivale a 0.5?",
-            opciones = listOf("1/4", "1/2", "2/3", "3/4"),
-            respuestaCorrecta = "1/2",
+            enunciado = "Si x + 7 = 12, ¿cuál es el valor de x?",
+            opciones = listOf(
+                "3",
+                "4",
+                "5",
+                "6"
+            ),
+            respuestaCorrecta = "5",
             dificultad = FACIL,
             categoria = MATEMATICAS
         ),
@@ -176,7 +228,12 @@ object BancoPreguntas {
 
         Pregunta(
             enunciado = "Si f(x) = 2x² - 3x + 1, ¿cuál es f(2)?",
-            opciones = listOf("1", "3", "5", "7"),
+            opciones = listOf(
+                "1",
+                "3",
+                "5",
+                "7"
+            ),
             respuestaCorrecta = "3",
             dificultad = DIFICIL,
             categoria = MATEMATICAS
@@ -197,7 +254,12 @@ object BancoPreguntas {
 
         Pregunta(
             enunciado = "¿Cuál es la solución positiva de x² - 5x + 6 = 0?",
-            opciones = listOf("1", "2", "3", "6"),
+            opciones = listOf(
+                "1",
+                "2",
+                "3",
+                "6"
+            ),
             respuestaCorrecta = "3",
             dificultad = DIFICIL,
             categoria = MATEMATICAS
@@ -205,16 +267,27 @@ object BancoPreguntas {
 
         Pregunta(
             enunciado = "¿Cuál es el valor de log₂(32)?",
-            opciones = listOf("4", "5", "6", "8"),
+            opciones = listOf(
+                "4",
+                "5",
+                "6",
+                "8"
+            ),
             respuestaCorrecta = "5",
             dificultad = DIFICIL,
             categoria = MATEMATICAS
         ),
 
+        // Pregunta especial solicitada: matrices
         Pregunta(
-            enunciado = "Si un triángulo rectángulo tiene catetos de 6 y 8, ¿cuánto mide su hipotenusa?",
-            opciones = listOf("9", "10", "12", "14"),
-            respuestaCorrecta = "10",
+            enunciado = "Si A = [[1, 2], [3, 4]], ¿cuál es el valor de la suma de los elementos de la diagonal principal?",
+            opciones = listOf(
+                "3",
+                "4",
+                "5",
+                "6"
+            ),
+            respuestaCorrecta = "5",
             dificultad = DIFICIL,
             categoria = MATEMATICAS
         ),
@@ -276,15 +349,16 @@ object BancoPreguntas {
             categoria = ENTRETENIMIENTO
         ),
 
+        // Pregunta especial solicitada: Harry Potter
         Pregunta(
-            enunciado = "¿Cómo se denomina normalmente cada entrega individual de una serie televisiva?",
+            enunciado = "¿Cómo se llama la escuela de magia a la que asiste Harry Potter?",
             opciones = listOf(
-                "Episodio",
-                "Temporada",
-                "Escena",
-                "Saga"
+                "Beauxbatons",
+                "Durmstrang",
+                "Hogwarts",
+                "Ilvermorny"
             ),
-            respuestaCorrecta = "Episodio",
+            respuestaCorrecta = "Hogwarts",
             dificultad = FACIL,
             categoria = ENTRETENIMIENTO
         ),
@@ -332,15 +406,16 @@ object BancoPreguntas {
             categoria = ENTRETENIMIENTO
         ),
 
+        // Pregunta especial solicitada: Dr. House
         Pregunta(
-            enunciado = "¿Qué obra literaria presenta al personaje de Don Quijote?",
+            enunciado = "¿Cuál es la especialidad médica principal del Dr. Gregory House en la serie \"House M.D.\"?",
             opciones = listOf(
-                "La Celestina",
-                "Don Quijote de la Mancha",
-                "El Lazarillo de Tormes",
-                "Fuenteovejuna"
+                "Cardiología",
+                "Diagnóstico",
+                "Pediatría",
+                "Dermatología"
             ),
-            respuestaCorrecta = "Don Quijote de la Mancha",
+            respuestaCorrecta = "Diagnóstico",
             dificultad = DIFICIL,
             categoria = ENTRETENIMIENTO
         ),
@@ -360,7 +435,7 @@ object BancoPreguntas {
 
 
         // =========================================================
-        // CULTURA - FÁCIL
+        // CULTURA GENERAL - FÁCIL
         // =========================================================
 
         Pregunta(
@@ -429,7 +504,7 @@ object BancoPreguntas {
         ),
 
         // =========================================================
-        // CULTURA - DIFÍCIL
+        // CULTURA GENERAL - DIFÍCIL
         // =========================================================
 
         Pregunta(
