@@ -4,10 +4,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF2F2">
+    android:background="#FF7F7D">
 
     <LinearLayout
-        android:id="@+id/contenedorPreguntas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -19,18 +18,51 @@
             android:text="Quiz de Entretenimiento"
             android:textSize="28sp"
             android:textStyle="bold"
-            android:textColor="#B3383E"
+            android:textColor="#8F252B"
             android:gravity="center"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/textoDificultad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dificultad"
+            android:textSize="17sp"
+            android:textColor="#555555"
+            android:gravity="center"
+            android:layout_marginBottom="20dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Selecciona tus respuestas"
+            android:text="Selecciona una respuesta para cada pregunta."
             android:textSize="16sp"
-            android:gravity="center"
             android:textColor="#555555"
-            android:layout_marginBottom="15dp" />
+            android:gravity="center"
+            android:layout_marginBottom="10dp" />
+
+        <LinearLayout
+            android:id="@+id/contenedorPreguntas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <Button
+            android:id="@+id/botonReiniciar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reiniciar"
+            android:textSize="17sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/botonEnviar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enviar Quiz"
+            android:textSize="17sp"
+            android:layout_marginBottom="20dp" />
 
     </LinearLayout>
 
