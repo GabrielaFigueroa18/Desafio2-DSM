@@ -1,27 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="30dp">
+    android:padding="32dp"
+    android:background="#F5F3FA">
 
     <TextView
-        android:id="@+id/textoBienvenida"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bienvenido a QuizMaster"
-        android:textSize="24sp"
+        android:text="QuizMaster"
+        android:textSize="36sp"
         android:textStyle="bold"
+        android:textColor="#5E35B1"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pon a prueba tus conocimientos"
+        android:textSize="18sp"
+        android:textColor="#666666"
         android:gravity="center"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginBottom="50dp" />
 
     <Button
-        android:id="@+id/botonCerrarSesion"
+        android:id="@+id/botonIniciarSesion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cerrar sesión"
-        android:textSize="16sp" />
+        android:text="Iniciar sesión"
+        android:textSize="17sp"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/botonRegistrarme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrarme"
+        android:textSize="17sp" />
 
 </LinearLayout>

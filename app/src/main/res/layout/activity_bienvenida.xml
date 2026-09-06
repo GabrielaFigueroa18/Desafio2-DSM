@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F3FA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/textoSaludo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="¡Hola!"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#5E35B1"
+            android:gravity="center"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bienvenido a QuizMaster"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="15dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cada quiz contiene 5 preguntas de opción múltiple. Debes responder todas antes de finalizar."
+            android:textSize="16sp"
+            android:textColor="#555555"
+            android:gravity="center"
+            android:layout_marginBottom="30dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selecciona un tipo de quiz"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="15dp" />
+
+        <Button
+            android:id="@+id/botonCulturaGeneral"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cultura General"
+            android:textSize="17sp"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/botonCiencia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ciencia"
+            android:textSize="17sp"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/botonDeportes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Deportes"
+            android:textSize="17sp"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/botonHistoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Historia"
+            android:textSize="17sp"
+            android:layout_marginBottom="30dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selecciona la dificultad"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp" />
+
+        <RadioGroup
+            android:id="@+id/grupoDificultad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="30dp">
+
+            <RadioButton
+                android:id="@+id/opcionFacil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fácil"
+                android:textSize="17sp"
+                android:layout_marginEnd="40dp" />
+
+            <RadioButton
+                android:id="@+id/opcionDificil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Difícil"
+                android:textSize="17sp" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/botonComenzarQuiz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Comenzar Quiz"
+            android:textSize="18sp"
+            android:layout_marginBottom="15dp" />
+
+        <Button
+            android:id="@+id/botonCerrarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cerrar sesión"
+            android:textSize="16sp"
+            android:layout_marginBottom="30dp" />
+
+    </LinearLayout>
+
+</ScrollView>
