@@ -2,6 +2,7 @@
 
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F3FA">
@@ -32,57 +33,90 @@
             android:gravity="center"
             android:layout_marginBottom="30dp" />
 
-        <EditText
-            android:id="@+id/campoNombre"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nombre"
-            android:inputType="textPersonName"
-            android:layout_marginBottom="14dp" />
+            android:layout_marginBottom="12dp">
 
-        <EditText
-            android:id="@+id/campoApellido"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campoNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Apellido"
-            android:inputType="textPersonName"
-            android:layout_marginBottom="14dp" />
+            android:layout_marginBottom="12dp">
 
-        <EditText
-            android:id="@+id/campoCorreoRegistro"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campoApellido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Correo electrónico"
-            android:inputType="textEmailAddress"
-            android:autofillHints="emailAddress"
-            android:layout_marginBottom="14dp" />
+            android:layout_marginBottom="12dp">
 
-        <EditText
-            android:id="@+id/campoContrasenaRegistro"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campoCorreoRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:autofillHints="emailAddress" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:autofillHints="newPassword"
-            android:layout_marginBottom="14dp" />
+            android:layout_marginBottom="12dp"
+            app:endIconMode="password_toggle">
 
-        <EditText
-            android:id="@+id/campoConfirmarContrasena"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campoContrasenaRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:autofillHints="newPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Confirmar contraseña"
-            android:inputType="textPassword"
-            android:autofillHints="newPassword"
-            android:layout_marginBottom="14dp" />
+            android:layout_marginBottom="14dp"
+            app:endIconMode="password_toggle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campoConfirmarContrasena"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:autofillHints="newPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/textoErrorRegistro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
+            android:textColor="#B00020"
             android:textSize="14sp"
             android:visibility="gone"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="14dp" />
 
         <Button
             android:id="@+id/botonRegistrarse"
@@ -90,22 +124,22 @@
             android:layout_height="wrap_content"
             android:text="Crear cuenta"
             android:textSize="16sp"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="14dp" />
 
         <Button
             android:id="@+id/botonVolverLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ya tengo una cuenta"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:layout_marginBottom="18dp" />
 
         <ProgressBar
             android:id="@+id/progresoRegistro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:visibility="gone"
-            android:layout_marginTop="20dp" />
+            android:visibility="gone" />
 
     </LinearLayout>
 

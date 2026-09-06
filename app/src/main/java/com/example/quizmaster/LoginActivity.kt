@@ -38,11 +38,8 @@ class LoginActivity : AppCompatActivity() {
 
     private fun inicializarComponentes() {
 
-        campoCorreo =
-            findViewById(R.id.campoCorreo)
-
-        campoContrasena =
-            findViewById(R.id.campoContrasena)
+        campoCorreo = findViewById(R.id.campoCorreo)
+        campoContrasena = findViewById(R.id.campoContrasena)
 
         botonIniciarSesion =
             findViewById(R.id.botonIniciarSesion)
@@ -76,10 +73,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun verificarSesion() {
 
-        val usuarioActual =
-            autenticacion.currentUser
-
-        if (usuarioActual != null) {
+        if (autenticacion.currentUser != null) {
 
             val intent = Intent(
                 this,
@@ -101,11 +95,7 @@ class LoginActivity : AppCompatActivity() {
 
         ocultarError()
 
-        if (!validarDatos(
-                correo,
-                contrasena
-            )
-        ) {
+        if (!validarDatos(correo, contrasena)) {
             return
         }
 
@@ -157,7 +147,6 @@ class LoginActivity : AppCompatActivity() {
             )
 
             campoCorreo.requestFocus()
-
             return false
         }
 
@@ -171,7 +160,6 @@ class LoginActivity : AppCompatActivity() {
             )
 
             campoCorreo.requestFocus()
-
             return false
         }
 
@@ -182,7 +170,6 @@ class LoginActivity : AppCompatActivity() {
             )
 
             campoContrasena.requestFocus()
-
             return false
         }
 
@@ -193,7 +180,6 @@ class LoginActivity : AppCompatActivity() {
             )
 
             campoContrasena.requestFocus()
-
             return false
         }
 
@@ -217,46 +203,31 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun mostrarError(
-        mensaje: String
-    ) {
+    private fun mostrarError(mensaje: String) {
 
-        textoErrorLogin.text =
-            mensaje
-
-        textoErrorLogin.visibility =
-            View.VISIBLE
+        textoErrorLogin.text = mensaje
+        textoErrorLogin.visibility = View.VISIBLE
     }
 
     private fun ocultarError() {
 
         textoErrorLogin.text = ""
-
-        textoErrorLogin.visibility =
-            View.GONE
+        textoErrorLogin.visibility = View.GONE
     }
 
     private fun mostrarCargando() {
 
-        progresoLogin.visibility =
-            View.VISIBLE
+        progresoLogin.visibility = View.VISIBLE
 
-        botonIniciarSesion.isEnabled =
-            false
-
-        botonIrRegistro.isEnabled =
-            false
+        botonIniciarSesion.isEnabled = false
+        botonIrRegistro.isEnabled = false
     }
 
     private fun ocultarCargando() {
 
-        progresoLogin.visibility =
-            View.GONE
+        progresoLogin.visibility = View.GONE
 
-        botonIniciarSesion.isEnabled =
-            true
-
-        botonIrRegistro.isEnabled =
-            true
+        botonIniciarSesion.isEnabled = true
+        botonIrRegistro.isEnabled = true
     }
 }
